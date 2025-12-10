@@ -53,8 +53,8 @@ export function CoffeeBeanDetail({
                 </div>
               )}
               <div>
-                <h1 className="text-amber-900 mb-2">{bean.origin}</h1>
-                <p className="text-amber-600">{bean.farm}</p>
+                <h1 className="text-amber-900 mb-2">{bean.name}</h1>
+                <p className="text-amber-600">{bean.origin} - {bean.farm}</p>
               </div>
             </div>
           </div>

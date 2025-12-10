@@ -27,11 +27,20 @@ export function BrewRecordForm({
   const [notes, setNotes] = useState("");
   const [flavorProfile, setFlavorProfile] =
     useState<FlavorProfile>({
-      acidity: 3,
-      sweetness: 3,
+      // 味覺指標
+      sour: 3,
+      sweet: 3,
+      bitter: 3,
       body: 3,
-      aroma: 3,
-      aftertaste: 3,
+      // 香氣指標
+      herbal: 3,
+      citrus: 3,
+      honey: 3,
+      nutty: 3,
+      caramel: 3,
+      driedFruit: 3,
+      spice: 3,
+      roasted: 3,
     });
 
   // Get unique values from previous records
@@ -241,11 +250,18 @@ export function BrewRecordForm({
                   <div key={key}>
                     <div className="flex items-center justify-between mb-2">
                       <label className="text-sm text-amber-700 capitalize">
-                        {key === "acidity" && "酸度"}
-                        {key === "sweetness" && "甜度"}
-                        {key === "body" && "醇厚度"}
-                        {key === "aroma" && "香氣"}
-                        {key === "aftertaste" && "餘韻"}
+                        {key === "sour" && "酸"}
+                        {key === "sweet" && "甜"}
+                        {key === "bitter" && "苦"}
+                        {key === "body" && "醇度"}
+                        {key === "herbal" && "草本味"}
+                        {key === "citrus" && "酸甜"}
+                        {key === "honey" && "蜜甜"}
+                        {key === "nutty" && "堅果"}
+                        {key === "caramel" && "焦糖"}
+                        {key === "driedFruit" && "果乾"}
+                        {key === "spice" && "香料"}
+                        {key === "roasted" && "炭香"}
                       </label>
                       <span className="text-sm text-amber-600">
                         {value}/5

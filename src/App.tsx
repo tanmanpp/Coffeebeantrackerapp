@@ -8,6 +8,7 @@ import { BrewRecordComparison } from './components/BrewRecordComparison';
 
 export interface CoffeeBean {
   id: string;
+  name: string;
   origin: string;
   farm: string;
   process: string;
@@ -17,11 +18,21 @@ export interface CoffeeBean {
 }
 
 export interface FlavorProfile {
-  acidity: number;
-  sweetness: number;
-  body: number;
-  aroma: number;
-  aftertaste: number;
+  // 味覺指標
+  sour: number;      // 酸
+  sweet: number;     // 甜
+  bitter: number;    // 苦
+  body: number;      // 醇度
+  // 香氣指標
+  citrus: number;    // 酸甜
+  honey: number;     // 蜜甜
+  driedFruit: number; // 果乾
+  caramel: number;   // 焦糖
+  nutty: number;     // 堅果
+  
+  roasted: number;   // 炭香
+  spice: number;     // 香料
+  herbal: number;    // 草本味
 }
 
 export interface BrewRecord {

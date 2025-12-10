@@ -33,36 +33,20 @@ export function BrewRecordComparison({ brewRecords, coffeeBeans, onBack }: BrewR
     if (!record1 || !record2) return [];
 
     return [
-      {
-        subject: '酸度',
-        record1: record1.flavorProfile.acidity,
-        record2: record2.flavorProfile.acidity,
-        fullMark: 5,
-      },
-      {
-        subject: '甜度',
-        record1: record1.flavorProfile.sweetness,
-        record2: record2.flavorProfile.sweetness,
-        fullMark: 5,
-      },
-      {
-        subject: '醇厚度',
-        record1: record1.flavorProfile.body,
-        record2: record2.flavorProfile.body,
-        fullMark: 5,
-      },
-      {
-        subject: '香氣',
-        record1: record1.flavorProfile.aroma,
-        record2: record2.flavorProfile.aroma,
-        fullMark: 5,
-      },
-      {
-        subject: '餘韻',
-        record1: record1.flavorProfile.aftertaste,
-        record2: record2.flavorProfile.aftertaste,
-        fullMark: 5,
-      },
+      // 香氣指標
+      { subject: '酸甜', record1: record1.flavorProfile.citrus, record2: record2.flavorProfile.citrus, fullMark: 5 },
+      { subject: '蜜甜', record1: record1.flavorProfile.honey, record2: record2.flavorProfile.honey, fullMark: 5 },
+      { subject: '果乾', record1: record1.flavorProfile.driedFruit, record2: record2.flavorProfile.driedFruit, fullMark: 5 },
+      { subject: '焦糖', record1: record1.flavorProfile.caramel, record2: record2.flavorProfile.caramel, fullMark: 5 },
+      { subject: '堅果', record1: record1.flavorProfile.nutty, record2: record2.flavorProfile.nutty, fullMark: 5 },
+      { subject: '炭香', record1: record1.flavorProfile.roasted, record2: record2.flavorProfile.roasted, fullMark: 5 },
+      { subject: '香料', record1: record1.flavorProfile.spice, record2: record2.flavorProfile.spice, fullMark: 5 },
+      { subject: '草本味', record1: record1.flavorProfile.herbal, record2: record2.flavorProfile.herbal, fullMark: 5 },
+      // 味覺指標
+      { subject: '酸', record1: record1.flavorProfile.sour, record2: record2.flavorProfile.sour, fullMark: 5 },
+      { subject: '甜', record1: record1.flavorProfile.sweet, record2: record2.flavorProfile.sweet, fullMark: 5 },
+      { subject: '苦', record1: record1.flavorProfile.bitter, record2: record2.flavorProfile.bitter, fullMark: 5 },
+      { subject: '醇度', record1: record1.flavorProfile.body, record2: record2.flavorProfile.body, fullMark: 5 },
     ];
   };
 

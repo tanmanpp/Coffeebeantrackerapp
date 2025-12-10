@@ -66,8 +66,8 @@ export function CoffeeBeanList({
                   </div>
                 )}
                 <div>
-                  <h3 className="text-amber-900 mb-1">{bean.origin}</h3>
-                  <p className="text-sm text-amber-600">{bean.farm}</p>
+                  <h3 className="text-amber-900 mb-1">{bean.name}</h3>
+                  <p className="text-sm text-amber-600">{bean.origin} - {bean.farm}</p>
                 </div>
               </div>
               <ChevronRight className="w-5 h-5 text-amber-400 group-hover:translate-x-1 transition-transform" />

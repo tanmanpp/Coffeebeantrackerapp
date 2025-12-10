@@ -1,24 +1,34 @@
-import { useState } from 'react';
-import { Trash2, ChevronDown, ChevronUp, Thermometer, Clock, Coffee } from 'lucide-react';
-import { BrewRecord } from '../App';
-import { FlavorRadarChart } from './FlavorRadarChart';
+import { useState } from "react";
+import {
+  Trash2,
+  ChevronDown,
+  ChevronUp,
+  Thermometer,
+  Clock,
+  Coffee,
+} from "lucide-react";
+import { BrewRecord } from "../App";
+import { FlavorRadarChart } from "./FlavorRadarChart";
 
 interface BrewRecordCardProps {
   record: BrewRecord;
   onDelete: () => void;
 }
 
-export function BrewRecordCard({ record, onDelete }: BrewRecordCardProps) {
+export function BrewRecordCard({
+  record,
+  onDelete,
+}: BrewRecordCardProps) {
   const [isExpanded, setIsExpanded] = useState(false);
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
-    return date.toLocaleDateString('zh-TW', {
-      year: 'numeric',
-      month: '2-digit',
-      day: '2-digit',
-      hour: '2-digit',
-      minute: '2-digit',
+    return date.toLocaleDateString("zh-TW", {
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+      hour: "2-digit",
+      minute: "2-digit",
     });
   };
 
@@ -35,8 +45,12 @@ export function BrewRecordCard({ record, onDelete }: BrewRecordCardProps) {
                 <Coffee className="w-5 h-5 text-white" />
               </div>
               <div>
-                <p className="text-amber-900">{record.dripper}</p>
-                <p className="text-sm text-amber-600">{formatDate(record.brewDate)}</p>
+                <p className="text-amber-900">
+                  {record.dripper}
+                </p>
+                <p className="text-sm text-amber-600">
+                  {formatDate(record.brewDate)}
+                </p>
               </div>
             </div>
           </div>
@@ -61,18 +75,24 @@ export function BrewRecordCard({ record, onDelete }: BrewRecordCardProps) {
               <Thermometer className="w-4 h-4 text-amber-600" />
               <p className="text-xs text-amber-600">水溫</p>
             </div>
-            <p className="text-sm text-amber-900">{record.waterTemp}°C</p>
+            <p className="text-sm text-amber-900">
+              {record.waterTemp}°C
+            </p>
           </div>
           <div className="bg-amber-50 rounded-lg p-3">
             <div className="flex items-center gap-2 mb-1">
               <Clock className="w-4 h-4 text-amber-600" />
               <p className="text-xs text-amber-600">時間</p>
             </div>
-            <p className="text-sm text-amber-900">{record.brewTime}</p>
+            <p className="text-sm text-amber-900">
+              {record.brewTime}
+            </p>
           </div>
           <div className="bg-amber-50 rounded-lg p-3">
             <p className="text-xs text-amber-600 mb-1">研磨</p>
-            <p className="text-sm text-amber-900">{record.grindSetting}</p>
+            <p className="text-sm text-amber-900">
+              {record.grindSetting}
+            </p>
           </div>
         </div>
       </div>
@@ -80,34 +100,116 @@ export function BrewRecordCard({ record, onDelete }: BrewRecordCardProps) {
       {isExpanded && (
         <div className="px-6 pb-6 space-y-4 border-t border-amber-100 pt-4">
           <div>
-            <p className="text-sm text-amber-600 mb-2">磨豆機</p>
+            <p className="text-sm text-amber-600 mb-2">
+              磨豆機
+            </p>
             <p className="text-amber-900">{record.grinder}</p>
           </div>
 
           <div>
-            <p className="text-sm text-amber-600 mb-3">風味表現</p>
+            <p className="text-sm text-amber-600 mb-3">
+              風味表現
+            </p>
             <div className="bg-amber-50 rounded-lg p-4">
-              <FlavorRadarChart flavorProfile={record.flavorProfile} />
+              <FlavorRadarChart
+                flavorProfile={record.flavorProfile}
+              />
               <div className="grid grid-cols-2 gap-3 mt-4">
                 <div className="flex justify-between items-center">
-                  <span className="text-sm text-amber-700">酸度</span>
-                  <span className="text-sm text-amber-900">{record.flavorProfile.acidity}/5</span>
+                  <span className="text-sm text-amber-700">
+                    酸
+                  </span>
+                  <span className="text-sm text-amber-900">
+                    {record.flavorProfile.sour}/5
+                  </span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-sm text-amber-700">甜度</span>
-                  <span className="text-sm text-amber-900">{record.flavorProfile.sweetness}/5</span>
+                  <span className="text-sm text-amber-700">
+                    甜
+                  </span>
+                  <span className="text-sm text-amber-900">
+                    {record.flavorProfile.sweet}/5
+                  </span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-sm text-amber-700">醇厚度</span>
-                  <span className="text-sm text-amber-900">{record.flavorProfile.body}/5</span>
+                  <span className="text-sm text-amber-700">
+                    苦
+                  </span>
+                  <span className="text-sm text-amber-900">
+                    {record.flavorProfile.bitter}/5
+                  </span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-sm text-amber-700">香氣</span>
-                  <span className="text-sm text-amber-900">{record.flavorProfile.aroma}/5</span>
+                  <span className="text-sm text-amber-700">
+                    醇度
+                  </span>
+                  <span className="text-sm text-amber-900">
+                    {record.flavorProfile.body}/5
+                  </span>
                 </div>
-                <div className="flex justify-between items-center col-span-2">
-                  <span className="text-sm text-amber-700">餘韻</span>
-                  <span className="text-sm text-amber-900">{record.flavorProfile.aftertaste}/5</span>
+                <div className="flex justify-between items-center">
+                  <span className="text-sm text-amber-700">
+                    酸甜
+                  </span>
+                  <span className="text-sm text-amber-900">
+                    {record.flavorProfile.citrus}/5
+                  </span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-sm text-amber-700">
+                    蜜甜
+                  </span>
+                  <span className="text-sm text-amber-900">
+                    {record.flavorProfile.honey}/5
+                  </span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-sm text-amber-700">
+                    果乾
+                  </span>
+                  <span className="text-sm text-amber-900">
+                    {record.flavorProfile.driedFruit}/5
+                  </span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-sm text-amber-700">
+                    焦糖
+                  </span>
+                  <span className="text-sm text-amber-900">
+                    {record.flavorProfile.caramel}/5
+                  </span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-sm text-amber-700">
+                    堅果
+                  </span>
+                  <span className="text-sm text-amber-900">
+                    {record.flavorProfile.nutty}/5
+                  </span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-sm text-amber-700">
+                    炭香
+                  </span>
+                  <span className="text-sm text-amber-900">
+                    {record.flavorProfile.roasted}/5
+                  </span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-sm text-amber-700">
+                    香料
+                  </span>
+                  <span className="text-sm text-amber-900">
+                    {record.flavorProfile.spice}/5
+                  </span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-sm text-amber-700">
+                    草本味
+                  </span>
+                  <span className="text-sm text-amber-900">
+                    {record.flavorProfile.herbal}/5
+                  </span>
                 </div>
               </div>
             </div>
@@ -115,8 +217,12 @@ export function BrewRecordCard({ record, onDelete }: BrewRecordCardProps) {
 
           {record.notes && (
             <div>
-              <p className="text-sm text-amber-600 mb-2">品飲筆記</p>
-              <p className="text-amber-900 bg-amber-50 rounded-lg p-4">{record.notes}</p>
+              <p className="text-sm text-amber-600 mb-2">
+                品飲筆記
+              </p>
+              <p className="text-amber-900 bg-amber-50 rounded-lg p-4">
+                {record.notes}
+              </p>
             </div>
           )}
 

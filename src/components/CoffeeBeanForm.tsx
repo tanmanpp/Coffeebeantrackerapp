@@ -9,6 +9,7 @@ interface CoffeeBeanFormProps {
 }
 
 export function CoffeeBeanForm({ initialData, onSubmit, onCancel }: CoffeeBeanFormProps) {
+  const [name, setName] = useState(initialData?.name || '');
   const [origin, setOrigin] = useState(initialData?.origin || '');
   const [farm, setFarm] = useState(initialData?.farm || '');
   const [process, setProcess] = useState(initialData?.process || '');
@@ -43,6 +44,7 @@ export function CoffeeBeanForm({ initialData, onSubmit, onCancel }: CoffeeBeanFo
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     onSubmit({
+      name,
       origin,
       farm,
       process,
@@ -71,6 +73,20 @@ export function CoffeeBeanForm({ initialData, onSubmit, onCancel }: CoffeeBeanFo
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-6">
+        <div>
+          <label className="block text-sm text-amber-700 mb-2">
+            名稱 <span className="text-red-500">*</span>
+          </label>
+          <input
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            placeholder="例如：耶加雪菲"
+            required
+            className="w-full px-4 py-3 border border-amber-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+          />
+        </div>
+
         <div>
           <label className="block text-sm text-amber-700 mb-2">
             產地 <span className="text-red-500">*</span>
